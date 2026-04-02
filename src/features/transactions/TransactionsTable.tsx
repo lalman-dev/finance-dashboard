@@ -1,12 +1,32 @@
 "use client";
 
 import { useFinanceStore } from "@/src/store/useFinanceStore";
+
 export default function TransactionsTable() {
-  const { transactions, filter, search } = useFinanceStore();
+  const { transactions, filter, search, sortBy, sortOrder, setSort } =
+    useFinanceStore();
 
   const filtered = transactions
     .filter((t) => (filter === "all" ? true : t.type === filter))
-    .filter((t) => t.category.toLowerCase().includes(search.toLowerCase()));
+    .filter((t) => t.category.toLowerCase().includes(search.toLowerCase()))
+    .sort((a, b) => {
+      if (sortBy === "amount") {
+        return sortOrder === "asc" ? a.amount - b.amount : b.amount - a.amount;
+      }
+
+      if (sortBy === "date") {
+        return sortOrder === "asc"
+          ? new Date(a.date).getTime() - new Date(b.date).getTime()
+          : new Date(b.date).getTime() - new Date(a.date).getTime();
+      }
+
+      return 0;
+    });
+
+  const renderSortIcon = (field: "date" | "amount") => {
+    if (sortBy !== field) return "↕";
+    return sortOrder === "asc" ? "↑" : "↓";
+  };
 
   if (filtered.length === 0) {
     return (
@@ -21,10 +41,24 @@ export default function TransactionsTable() {
       <table className="w-full border-collapse mt-4">
         <thead>
           <tr className="text-left text-sm text-gray-500">
-            <th className="py-2">Date</th>
+            {/* Date */}
+            <th
+              className="py-2 cursor-pointer select-none"
+              onClick={() => setSort("date")}
+            >
+              Date <span className="ml-1">{renderSortIcon("date")}</span>
+            </th>
+
             <th>Category</th>
             <th>Type</th>
-            <th className="text-right">Amount</th>
+
+            {/* Amount */}
+            <th
+              className="text-right cursor-pointer select-none"
+              onClick={() => setSort("amount")}
+            >
+              Amount <span className="ml-1">{renderSortIcon("amount")}</span>
+            </th>
           </tr>
         </thead>
 

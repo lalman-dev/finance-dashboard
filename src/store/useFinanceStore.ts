@@ -1,10 +1,11 @@
-
 import { create } from "zustand";
 import { Transaction } from "../types";
 import { transactions as initialData } from "../lib/mockData";
 
 type Role = "viewer" | "admin";
 type FilterType = "all" | "income" | "expense";
+type SortField = "date" | "amount";
+type SortOrder = "asc" | "desc";
 
 type Store = {
   transactions: Transaction[];
@@ -12,8 +13,11 @@ type Store = {
   role: Role;
   filter: FilterType;
   search: string;
+  sortBy: SortField;
+  sortOrder: SortOrder;
 
- 
+  setSort: (field: SortField) => void;
+
   setRole: (role: Role) => void;
   addTransaction: (t: Transaction) => void;
 
@@ -26,6 +30,15 @@ export const useFinanceStore = create<Store>((set) => ({
   role: "viewer",
   filter: "all",
   search: "",
+  sortBy: "date",
+  sortOrder: "desc",
+
+  setSort: (field) =>
+    set((state) => ({
+      sortBy: field,
+      sortOrder:
+        state.sortBy === field && state.sortOrder === "asc" ? "desc" : "asc",
+    })),
 
   setRole: (role) => set({ role }),
 
