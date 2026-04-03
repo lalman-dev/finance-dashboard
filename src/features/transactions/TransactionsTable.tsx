@@ -40,7 +40,7 @@ export default function TransactionsTable() {
     <div className="overflow-x-auto">
       <table className="w-full border-collapse mt-4">
         <thead>
-          <tr className="text-left text-sm text-gray-500">
+          <tr className="text-left text-sm text-gray-500 dark:text-gray-400">
             {/* Date */}
             <th
               className="py-2 cursor-pointer select-none"
@@ -64,11 +64,16 @@ export default function TransactionsTable() {
 
         <tbody>
           {filtered.map((t) => (
-            <tr key={t.id} className="border-t hover:bg-gray-50 transition">
+            <tr
+              key={t.id}
+              className="border-t border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition"
+            >
               <td className="py-2">{t.date}</td>
               <td>{t.category}</td>
               <td className="capitalize">{t.type}</td>
-              <td className="text-right font-medium">₹{t.amount}</td>
+              <td className="text-right font-medium text-gray-900 dark:text-white">
+                ₹{t.amount}
+              </td>
             </tr>
           ))}
         </tbody>

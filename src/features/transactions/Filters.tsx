@@ -13,7 +13,7 @@ export default function Filters() {
         placeholder="Search transactions..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="border rounded-lg px-3 py-2 w-full md:w-64"
+        className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg px-3 py-2"
       />
 
       {/* Filter */}
@@ -23,7 +23,9 @@ export default function Filters() {
             key={type}
             onClick={() => setFilter(type as any)}
             className={`px-3 py-1 rounded-lg border ${
-              filter === type ? "bg-indigo-500 text-white" : "bg-white"
+              filter === type
+                ? "bg-indigo-500 text-white"
+                : "bg-white dark:bg-gray-800 dark:text-white border-gray-200 dark:border-gray-700"
             }`}
           >
             {type}
