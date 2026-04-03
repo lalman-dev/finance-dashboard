@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useFinanceStore } from "@/src/store/useFinanceStore";
+import { motion } from "framer-motion";
 
 type Props = {
   open: boolean;
@@ -35,8 +36,18 @@ export default function AddTransactionModal({ open, onClose }: Props) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-      <div className="w-full max-w-md rounded-2xl p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700">
+    <div
+      className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
+      onClick={onClose}
+    >
+      <motion.div
+        onClick={(e) => e.stopPropagation()}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{ duration: 0.2 }}
+        className="w-full max-w-md rounded-2xl p-6 bg-white border shadow-xl"
+      >
         <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
           Add Transaction
         </h2>
@@ -98,7 +109,7 @@ export default function AddTransactionModal({ open, onClose }: Props) {
             Add
           </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
