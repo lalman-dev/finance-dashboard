@@ -12,7 +12,7 @@ export default function RoleToggle() {
           key={r}
           onClick={() => setRole(r as any)}
           className={`px-3 py-1 rounded-lg border ${
-            role === r ? "bg-indigo-500 text-white" : "bg-white"
+            role === r ? "bg-indigo-500 text-white" : " text-indigo-500"
           }`}
         >
           {r}
