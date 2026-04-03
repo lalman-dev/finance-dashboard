@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Providers } from "./providers";
 
 export const metadata = {
   title: "Finance Dashboard",
@@ -12,7 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
