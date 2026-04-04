@@ -28,7 +28,11 @@ export default function DashboardPage() {
           <ThemeToggle />
         </div>
       </div>
-      
+      <div className="mb-6 p-4 rounded-lg bg-white dark:bg-gray-900 border text-sm text-gray-600 dark:text-gray-400">
+        This dashboard helps users track financial activity, analyze spending
+        patterns, and manage transactions efficiently in a clean and intuitive
+        interface.
+      </div>
 
       <SummaryCards />
       <ChartsSection />
