@@ -8,8 +8,7 @@ This project demonstrates strong fundamentals in **frontend architecture, UI des
 
 ## 🚀 Live Demo
 
-👉 *[Dashboard](https://finance-dashboard-kappa-liard.vercel.app/)*
-👉 *[Github repo](https://github.com/lalman-dev/finance-dashboard)*
+👉 *[Live link](https://finance-dashboard-kappa-liard.vercel.app/)*
 
 ---
 
