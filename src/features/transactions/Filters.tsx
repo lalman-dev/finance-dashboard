@@ -1,6 +1,7 @@
 "use client";
 
 import { useFinanceStore } from "@/src/store/useFinanceStore";
+import { motion } from "framer-motion";
 
 export default function Filters() {
   const { filter, setFilter, search, setSearch } = useFinanceStore();
@@ -17,9 +18,16 @@ export default function Filters() {
       />
 
       {/* Filter */}
-      <div className="flex gap-2">
+      <motion.div
+        className="flex gap-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+      >
         {["all", "income", "expense"].map((type) => (
-          <button
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
             key={type}
             onClick={() => setFilter(type as any)}
             className={`px-3 py-1 rounded-lg border ${
@@ -29,9 +37,9 @@ export default function Filters() {
             }`}
           >
             {type}
-          </button>
+          </motion.button>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }

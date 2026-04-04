@@ -12,7 +12,7 @@ const COLORS = ["#4f46e5", "#22c55e", "#f59e0b"];
 
 export default function SpendingPieChart() {
   return (
-    <div className="h-64">
+    <div className="h-64 w-full">
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie data={data} dataKey="value" outerRadius={80} label>

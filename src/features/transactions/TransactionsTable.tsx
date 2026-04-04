@@ -1,6 +1,7 @@
 "use client";
 
 import { useFinanceStore } from "@/src/store/useFinanceStore";
+import { motion } from "framer-motion";
 
 export default function TransactionsTable() {
   const { transactions, filter, search, sortBy, sortOrder, setSort } =
@@ -40,7 +41,12 @@ export default function TransactionsTable() {
     <div className="overflow-x-auto">
       <table className="w-full border-collapse mt-4">
         <thead>
-          <tr className="text-left text-sm text-gray-500 dark:text-gray-400">
+          <motion.tr
+            className="text-left text-sm text-gray-500 dark:text-gray-400"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+          >
             {/* Date */}
             <th
               className="py-2 cursor-pointer select-none"
@@ -59,7 +65,7 @@ export default function TransactionsTable() {
             >
               Amount <span className="ml-1">{renderSortIcon("amount")}</span>
             </th>
-          </tr>
+          </motion.tr>
         </thead>
 
         <tbody>

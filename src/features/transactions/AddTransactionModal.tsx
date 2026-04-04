@@ -46,7 +46,7 @@ export default function AddTransactionModal({ open, onClose }: Props) {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
         transition={{ duration: 0.2 }}
-        className="w-full max-w-md rounded-2xl p-6 bg-white border shadow-xl"
+        className="w-full max-w-md rounded-2xl p-6 bg-white text-gray-500 dark:bg-gray-800 dark:text-gray-400 border shadow-xl"
       >
         <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
           Add Transaction

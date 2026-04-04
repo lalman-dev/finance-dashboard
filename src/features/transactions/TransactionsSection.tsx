@@ -6,6 +6,7 @@ import TransactionsTable from "./TransactionsTable";
 import { useFinanceStore } from "@/src/store/useFinanceStore";
 import { useState } from "react";
 import AddTransactionModal from "./AddTransactionModal";
+import { motion } from "framer-motion";
 
 export default function TransactionsSection() {
   const [open, setOpen] = useState(false);
@@ -17,12 +18,14 @@ export default function TransactionsSection() {
         <h3 className="text-lg font-medium">Transactions</h3>
 
         {role === "admin" && (
-          <button
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
             onClick={() => setOpen(true)}
             className="px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition"
           >
             + Add Transaction
-          </button>
+          </motion.button>
         )}
       </div>
       <Filters />

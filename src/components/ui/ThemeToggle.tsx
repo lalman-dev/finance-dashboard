@@ -2,6 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -14,11 +15,13 @@ export default function ThemeToggle() {
   if (!mounted) return null;
 
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="px-3 py-1 rounded-lg border bg-white dark:bg-gray-800 dark:text-white"
     >
       {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
-    </button>
+    </motion.button>
   );
 }
