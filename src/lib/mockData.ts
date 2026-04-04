@@ -22,4 +22,11 @@ export const transactions: Transaction[] = [
     type: "expense",
     date: "2026-04-03",
   },
+  {
+    id: "4",
+    amount: 2500,
+    category: "Shopping",
+    type: "expense",
+    date: "2026-04-04",
+  },
 ];
