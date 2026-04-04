@@ -1,36 +1,210 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💰 Finance Dashboard UI
 
-## Getting Started
+A modern, responsive **Finance Dashboard** built as part of the Frontend Developer assignment for **Zorvyn**.
 
-First, run the development server:
+This project demonstrates strong fundamentals in **frontend architecture, UI design, state management, and user experience**, with a focus on building a clean and scalable dashboard interface.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Live Demo
+
+👉 *[Dashboard](https://finance-dashboard-kappa-liard.vercel.app/)*
+👉 *[Github repo](https://github.com/lalman-dev/finance-dashboard)*
+
+---
+
+## 📌 Objective
+
+The goal of this project is to design and build a **clean, intuitive, and interactive finance dashboard UI** that allows users to:
+
+* View financial summaries
+* Explore transactions
+* Analyze spending patterns
+* Interact with role-based UI behavior
+
+---
+
+## 🧱 Tech Stack
+
+* **Framework:** Next.js (App Router)
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS (v3)
+* **State Management:** Zustand
+* **Charts:** Recharts
+* **Animations:** Framer Motion
+
+---
+
+## 🧩 Features
+
+### 📊 Dashboard Overview
+
+* Summary cards:
+
+  * Total Balance
+  * Income
+  * Expenses
+* **Line Chart** → Balance trend over time
+* **Pie Chart** → Category-wise spending breakdown
+
+---
+
+### 💳 Transactions Section
+
+* Tabular transaction display with:
+
+  * Date
+  * Category
+  * Type (Income / Expense)
+  * Amount
+* Functionalities:
+
+  * 🔍 Search by category
+  * 🧮 Filter (All / Income / Expense)
+  * ↕️ Sorting (Date / Amount)
+* UX Enhancements:
+
+  * Hover states
+  * Empty state handling
+
+---
+
+### 🔐 Role-Based UI (Simulated RBAC)
+
+* Toggle between:
+
+  * **Viewer** → Read-only access
+  * **Admin** → Can add transactions
+* Admin-only features:
+
+  * ➕ Add Transaction modal
+
+---
+
+### 🧠 Insights Section
+
+Basic financial insights derived from data:
+
+* Highest spending category
+* Monthly comparison indicators
+* Simple spending observations
+
+---
+
+### 🌗 Dark Mode
+
+* Implemented using **next-themes**
+* Fully responsive to user toggle
+* Consistent styling across components
+
+---
+
+### ✨ UI/UX Enhancements
+
+* Clean spacing and layout hierarchy
+* Responsive design (mobile-friendly)
+* Smooth transitions using Framer Motion
+* Graceful handling of edge cases (empty data)
+
+---
+
+## 🗂️ Project Structure
+
+```
+src/
+├── app/
+│   ├── dashboard/
+│   ├── layout.tsx
+│   └── providers.tsx
+│
+├── components/
+│   ├── ui/
+│   └── charts/
+│
+├── features/
+│   ├── dashboard/
+│   └── transactions/
+│
+├── store/
+│   └── useFinanceStore.ts
+│
+├── lib/
+│   └── mockData.ts
+│
+└── types/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚙️ State Management
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Global state handled using **Zustand**:
 
-## Learn More
+* Transactions data
+* Filters & search
+* Sorting logic
+* Role management
 
-To learn more about Next.js, take a look at the following resources:
+This ensures a **clean and scalable state flow** without unnecessary complexity.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 Setup Instructions
 
-## Deploy on Vercel
+```bash
+# Clone repo
+git clone https://github.com/lalman-dev/finance-dashboard.git
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Install dependencies
+npm install
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Run development server
+npm run dev
+```
+
+---
+
+## 🧪 Assumptions
+
+* Data is mocked (no backend integration required)
+* Role-based access is simulated on frontend
+* Financial calculations are simplified for demonstration
+
+---
+
+## 🚧 Future Improvements
+
+* Backend integration (API + persistence)
+* Authentication system
+* Advanced analytics & charts
+* Export functionality (CSV/JSON)
+* Pagination for large datasets
+
+---
+
+## 🎯 Evaluation Focus (Aligned with Assignment)
+
+This project emphasizes:
+
+* ✔ Clean and intuitive UI design
+* ✔ Component-based architecture
+* ✔ Proper state management
+* ✔ Responsive layout
+* ✔ Role-based interaction
+* ✔ Thoughtful UX decisions
+* ✔ Code clarity and scalability
+
+---
+
+## 🙌 Final Note
+
+This project reflects my approach to:
+
+* Breaking down a problem
+* Structuring frontend systems
+* Building scalable and maintainable UI
+* Paying attention to user experience details
+
+---
+
+**Thank you for the opportunity!**
