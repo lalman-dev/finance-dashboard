@@ -8,7 +8,7 @@ This project demonstrates strong fundamentals in **frontend architecture, UI des
 
 ## 🚀 Live Demo
 
-👉 *[Live link](https://finance-dashboard-kappa-liard.vercel.app/)*
+👉 _[Live link](https://finance-dashboard-kappa-liard.vercel.app/)_
 
 ---
 
@@ -16,21 +16,21 @@ This project demonstrates strong fundamentals in **frontend architecture, UI des
 
 The goal of this project is to design and build a **clean, intuitive, and interactive finance dashboard UI** that allows users to:
 
-* View financial summaries
-* Explore transactions
-* Analyze spending patterns
-* Interact with role-based UI behavior
+- View financial summaries
+- Explore transactions
+- Analyze spending patterns
+- Interact with role-based UI behavior
 
 ---
 
 ## 🧱 Tech Stack
 
-* **Framework:** Next.js (App Router)
-* **Language:** TypeScript
-* **Styling:** Tailwind CSS (v3)
-* **State Management:** Zustand
-* **Charts:** Recharts
-* **Animations:** Framer Motion
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS (v3)
+- **State Management:** Zustand
+- **Charts:** Recharts
+- **Animations:** Framer Motion
 
 ---
 
@@ -38,45 +38,43 @@ The goal of this project is to design and build a **clean, intuitive, and intera
 
 ### 📊 Dashboard Overview
 
-* Summary cards:
+- Summary cards:
+  - Total Balance
+  - Income
+  - Expenses
 
-  * Total Balance
-  * Income
-  * Expenses
-* **Line Chart** → Balance trend over time
-* **Pie Chart** → Category-wise spending breakdown
+- **Line Chart** → Balance trend over time
+- **Pie Chart** → Category-wise spending breakdown
 
 ---
 
 ### 💳 Transactions Section
 
-* Tabular transaction display with:
+- Tabular transaction display with:
+  - Date
+  - Category
+  - Type (Income / Expense)
+  - Amount
 
-  * Date
-  * Category
-  * Type (Income / Expense)
-  * Amount
-* Functionalities:
+- Functionalities:
+  - 🔍 Search by category
+  - 🧮 Filter (All / Income / Expense)
+  - ↕️ Sorting (Date / Amount)
 
-  * 🔍 Search by category
-  * 🧮 Filter (All / Income / Expense)
-  * ↕️ Sorting (Date / Amount)
-* UX Enhancements:
-
-  * Hover states
-  * Empty state handling
+- UX Enhancements:
+  - Hover states
+  - Empty state handling
 
 ---
 
 ### 🔐 Role-Based UI (Simulated RBAC)
 
-* Toggle between:
+- Toggle between:
+  - **Viewer** → Read-only access
+  - **Admin** → Can add transactions
 
-  * **Viewer** → Read-only access
-  * **Admin** → Can add transactions
-* Admin-only features:
-
-  * ➕ Add Transaction modal
+- Admin-only features:
+  - ➕ Add Transaction modal
 
 ---
 
@@ -84,26 +82,39 @@ The goal of this project is to design and build a **clean, intuitive, and intera
 
 Basic financial insights derived from data:
 
-* Highest spending category
-* Monthly comparison indicators
-* Simple spending observations
+- Highest spending category
+- Monthly comparison indicators
+- Simple spending observations
+
+---
+
+## 📄 PDF Export
+
+Users can export transactions as a structured PDF report, including:
+
+- Summary (Income, Expense, Balance)
+- Transactions table
+- Total transaction count
+- Generated date
+
+This enhances usability by allowing users to share or store financial reports externally.
 
 ---
 
 ### 🌗 Dark Mode
 
-* Implemented using **next-themes**
-* Fully responsive to user toggle
-* Consistent styling across components
+- Implemented using **next-themes**
+- Fully responsive to user toggle
+- Consistent styling across components
 
 ---
 
 ### ✨ UI/UX Enhancements
 
-* Clean spacing and layout hierarchy
-* Responsive design (mobile-friendly)
-* Smooth transitions using Framer Motion
-* Graceful handling of edge cases (empty data)
+- Clean spacing and layout hierarchy
+- Responsive design (mobile-friendly)
+- Smooth transitions using Framer Motion
+- Graceful handling of edge cases (empty data)
 
 ---
 
@@ -139,10 +150,10 @@ src/
 
 Global state handled using **Zustand**:
 
-* Transactions data
-* Filters & search
-* Sorting logic
-* Role management
+- Transactions data
+- Filters & search
+- Sorting logic
+- Role management
 
 This ensures a **clean and scalable state flow** without unnecessary complexity.
 
@@ -165,19 +176,19 @@ npm run dev
 
 ## 🧪 Assumptions
 
-* Data is mocked (no backend integration required)
-* Role-based access is simulated on frontend
-* Financial calculations are simplified for demonstration
+- Data is mocked (no backend integration required)
+- Role-based access is simulated on frontend
+- Financial calculations are simplified for demonstration
 
 ---
 
 ## 🚧 Future Improvements
 
-* Backend integration (API + persistence)
-* Authentication system
-* Advanced analytics & charts
-* Export functionality (CSV/JSON)
-* Pagination for large datasets
+- Backend integration (API + persistence)
+- Authentication system
+- Advanced analytics & charts
+- Export functionality (CSV/JSON)
+- Pagination for large datasets
 
 ---
 
@@ -185,13 +196,13 @@ npm run dev
 
 This project emphasizes:
 
-* ✔ Clean and intuitive UI design
-* ✔ Component-based architecture
-* ✔ Proper state management
-* ✔ Responsive layout
-* ✔ Role-based interaction
-* ✔ Thoughtful UX decisions
-* ✔ Code clarity and scalability
+- ✔ Clean and intuitive UI design
+- ✔ Component-based architecture
+- ✔ Proper state management
+- ✔ Responsive layout
+- ✔ Role-based interaction
+- ✔ Thoughtful UX decisions
+- ✔ Code clarity and scalability
 
 ---
 
@@ -199,10 +210,16 @@ This project emphasizes:
 
 This project reflects my approach to:
 
-* Breaking down a problem
-* Structuring frontend systems
-* Building scalable and maintainable UI
-* Paying attention to user experience details
+- Breaking down a problem
+- Structuring frontend systems
+- Building scalable and maintainable UI
+- Paying attention to user experience details
+
+---
+
+## 🧠 Approach
+
+This project was built with a focus on clean UI, usability, and extensibility, treating the assignment as a real-world product rather than just a coding task.
 
 ---
 
