@@ -30,10 +30,10 @@ export default function Filters() {
             whileTap={{ scale: 0.97 }}
             key={type}
             onClick={() => setFilter(type as any)}
-            className={`px-3 py-1 rounded-lg border ${
+            className={`px-3 py-1 rounded-lg border font-medium transition-all ${
               filter === type
-                ? "bg-indigo-500 text-white"
-                : "bg-white dark:bg-gray-800 dark:text-white border-gray-200 dark:border-gray-700"
+                ? "bg-indigo-500 text-white shadow-sm"
+                : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border-gray-200 dark:border-gray-700"
             }`}
           >
             {type}
