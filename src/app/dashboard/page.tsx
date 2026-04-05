@@ -23,7 +23,7 @@ export default function DashboardPage() {
     >
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-semibold">Dashboard</h1>
-        <div className="flex gap-3">
+        <div className="flex items-center gap-2 rounded-xl">
           <RoleToggle />
           <ThemeToggle />
         </div>
