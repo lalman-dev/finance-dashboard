@@ -18,23 +18,25 @@ export default function TransactionsSection() {
     <Card>
       <div className="flex items-center justify-between mb-4 ">
         <h3 className="text-xl font-medium">Transactions</h3>
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-end">
           {role === "admin" && (
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               onClick={() => setOpen(true)}
-              className="px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-700 transition"
+              className="w-full sm:w-auto px-4 py-2 text-sm font-medium rounded-lg border border-indigo-500 text-indigo-500 hover:bg-indigo-500 hover:text-white transition"
             >
               + Add Transaction
             </motion.button>
           )}
-          <button
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
             onClick={() => exportTransactionsPDF(transactions)}
-            className="px-4 py-2 text-sm rounded-lg bg-indigo-500 text-white hover:bg-indigo-700 transition"
+            className="w-full sm:w-auto px-4 py-2 text-sm font-medium rounded-lg border border-indigo-500 text-indigo-500 hover:bg-indigo-500 hover:text-white transition"
           >
             💾 Export PDF
-          </button>
+          </motion.button>
         </div>
       </div>
       <Filters />
