@@ -1,7 +1,6 @@
 "use client";
 
 import { useFinanceStore } from "@/src/store/useFinanceStore";
-import { motion } from "framer-motion";
 import clsx from "clsx";
 
 const roles = ["viewer", "admin"] as const;
@@ -10,26 +9,16 @@ export default function RoleToggle() {
   const { role, setRole } = useFinanceStore();
 
   return (
-    <div className="relative flex bg-gray-200 dark:bg-gray-800 rounded-xl">
-      <motion.div
-        layout
-        className="absolute top-1 bottom-1 w-1/2 rounded-lg bg-white dark:bg-gray-900 shadow"
-        initial={false}
-        animate={{
-          x: role === "viewer" ? 0 : "100%",
-        }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      />
-
+    <div className="flex items-center gap-0.5 bg-black/[0.05] dark:bg-white/[0.06] rounded-lg p-0.5">
       {roles.map((r) => (
         <button
           key={r}
           onClick={() => setRole(r)}
           className={clsx(
-            "relative z-10 px-3 py-2 text-sm font-medium rounded-lg transition-colors",
+            "px-3 py-1.5 text-[12px] font-medium rounded-md capitalize transition-all duration-150",
             role === r
-              ? "text-black dark:text-white"
-              : "text-gray-600 dark:text-gray-300",
+              ? "bg-white dark:bg-[#1e2130] text-gray-900 dark:text-white shadow-sm"
+              : "text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300",
           )}
         >
           {r}

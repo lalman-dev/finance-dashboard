@@ -11,9 +11,9 @@ export default function Card({
   return (
     <div
       className={clsx(
-        "rounded-2xl p-4 shadow-sm border transition-colors",
-        "bg-white text-gray-900 border-gray-200",
-        "dark:bg-gray-900 dark:text-white dark:border-gray-700",
+        "rounded-xl p-5",
+        "bg-white dark:bg-[#111318]",
+        "border border-black/[0.06] dark:border-white/[0.06]",
         className,
       )}
     >

@@ -2,26 +2,30 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { Sun, Moon } from "lucide-react";
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
+  useEffect(() => setMounted(true), []);
   if (!mounted) return null;
 
+  const isDark = theme === "dark";
   return (
-    <motion.button
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="px-3 py-1 rounded-lg border bg-white dark:bg-gray-800 dark:text-white"
+    <button
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="w-8 h-8 rounded-lg flex items-center justify-center
+        text-gray-400 dark:text-gray-500
+        hover:text-gray-700 dark:hover:text-white
+        hover:bg-black/[0.05] dark:hover:bg-white/[0.07]
+        transition-colors"
+      aria-label="Toggle theme"
     >
-      {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
-    </motion.button>
+      {isDark ? (
+        <Sun size={15} strokeWidth={2} />
+      ) : (
+        <Moon size={15} strokeWidth={2} />
+      )}
+    </button>
   );
 }

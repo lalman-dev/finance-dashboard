@@ -2,10 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-gray-100 text-gray-900 transition-colors;
-}
+@layer base {
+  html {
+    font-feature-settings: "cv11", "ss01";
+  }
 
-.dark body {
-  @apply bg-gray-950 text-white;
+  body {
+    background-color: #c8c8c9;
+    color: #111318;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .dark body {
+    background-color: #171a23;
+    color: #f0f2f5;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 99px;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+  }
 }

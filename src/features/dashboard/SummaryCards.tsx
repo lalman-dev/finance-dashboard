@@ -1,55 +1,66 @@
 "use client";
 
 import { useFinanceStore } from "@/src/store/useFinanceStore";
-import { formatCurrency, getMonthOverMonth, getSavingsRate } from "@/src/lib/finance";
+import {
+  formatCurrency,
+  getMonthOverMonth,
+  getSavingsRate,
+} from "@/src/lib/finance";
 import { motion } from "framer-motion";
-import { TrendingUp, TrendingDown, Minus, Wallet, ArrowDownCircle, ArrowUpCircle, PiggyBank } from "lucide-react";
+import {
+  TrendingUp,
+  TrendingDown,
+  Wallet,
+  ArrowDownCircle,
+  ArrowUpCircle,
+  PiggyBank,
+} from "lucide-react";
 import clsx from "clsx";
 
 type CardData = {
   label: string;
   value: string;
+  subtext?: string;
   change: number | null;
   icon: React.ReactNode;
-  iconBg: string;
+  borderColor: string;
+  iconColor: string;
   changePositiveIsGood: boolean;
 };
 
-function TrendBadge({ change, positiveIsGood }: { change: number | null; positiveIsGood: boolean }) {
+function TrendBadge({
+  change,
+  positiveIsGood,
+}: {
+  change: number | null;
+  positiveIsGood: boolean;
+}) {
   if (change === null) return null;
-
-  const isPositive = change > 0;
-  const isGood = isPositive === positiveIsGood;
-
+  const isGood = change > 0 === positiveIsGood;
   return (
-    <span
+    <div
       className={clsx(
-        "inline-flex items-center gap-1 text-xs font-medium px-1.5 py-0.5 rounded-md",
-        isGood
-          ? "bg-green-50 dark:bg-green-950 text-green-700 dark:text-green-400"
-          : "bg-red-50 dark:bg-red-950 text-red-700 dark:text-red-400"
+        "flex items-center gap-1 text-[11px] font-semibold",
+        isGood ? "text-emerald-500" : "text-red-500",
       )}
     >
-      {change === 0 ? (
-        <Minus size={11} />
-      ) : isPositive ? (
-        <TrendingUp size={11} />
+      {change > 0 ? (
+        <TrendingUp size={11} strokeWidth={2.5} />
       ) : (
-        <TrendingDown size={11} />
+        <TrendingDown size={11} strokeWidth={2.5} />
       )}
       {Math.abs(change)}%
-    </span>
+    </div>
   );
 }
 
 const container = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.07 } },
+  visible: { transition: { staggerChildren: 0.06 } },
 };
-
 const item = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.26 } },
 };
 
 export default function SummaryCards() {
@@ -62,39 +73,43 @@ export default function SummaryCards() {
       label: "Net Balance",
       value: formatCurrency(mom.balance.current),
       change: mom.balance.change,
-      icon: <Wallet size={18} />,
-      iconBg: "bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400",
+      icon: <Wallet size={16} strokeWidth={1.8} />,
+      borderColor: "border-l-indigo-400",
+      iconColor: "text-indigo-400",
       changePositiveIsGood: true,
     },
     {
       label: "Income",
       value: formatCurrency(mom.income.current),
       change: mom.income.change,
-      icon: <ArrowUpCircle size={18} />,
-      iconBg: "bg-green-100 dark:bg-green-950 text-green-600 dark:text-green-400",
+      icon: <ArrowUpCircle size={16} strokeWidth={1.8} />,
+      borderColor: "border-l-emerald-400",
+      iconColor: "text-emerald-400",
       changePositiveIsGood: true,
     },
     {
       label: "Expenses",
       value: formatCurrency(mom.expense.current),
       change: mom.expense.change,
-      icon: <ArrowDownCircle size={18} />,
-      iconBg: "bg-red-100 dark:bg-red-950 text-red-600 dark:text-red-400",
+      icon: <ArrowDownCircle size={16} strokeWidth={1.8} />,
+      borderColor: "border-l-red-400",
+      iconColor: "text-red-400",
       changePositiveIsGood: false,
     },
     {
       label: "Savings Rate",
       value: `${savingsRate}%`,
       change: null,
-      icon: <PiggyBank size={18} />,
-      iconBg: "bg-amber-100 dark:bg-amber-950 text-amber-600 dark:text-amber-400",
+      icon: <PiggyBank size={16} strokeWidth={1.8} />,
+      borderColor: "border-l-amber-400",
+      iconColor: "text-amber-400",
       changePositiveIsGood: true,
     },
   ];
 
   return (
     <motion.div
-      className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+      className="grid grid-cols-2 lg:grid-cols-4 gap-3"
       variants={container}
       initial="hidden"
       animate="visible"
@@ -103,24 +118,46 @@ export default function SummaryCards() {
         <motion.div
           key={card.label}
           variants={item}
-          className="rounded-xl p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm"
+          className={clsx(
+            "relative rounded-xl p-5 border-l-[3px]",
+            "bg-white dark:bg-[#111318]",
+            "border border-black/[0.06] dark:border-white/[0.06]",
+            "border-l-[3px]",
+            card.borderColor,
+          )}
         >
-          <div className="flex items-start justify-between">
-            <div className={clsx("p-2 rounded-lg", card.iconBg)}>
+          {/* Icon + trend */}
+          <div className="flex items-center justify-between mb-4">
+            <div
+              className={clsx(
+                "p-1.5 rounded-lg bg-black/[0.04] dark:bg-white/[0.05]",
+                card.iconColor,
+              )}
+            >
               {card.icon}
             </div>
-            <TrendBadge change={card.change} positiveIsGood={card.changePositiveIsGood} />
+            <TrendBadge
+              change={card.change}
+              positiveIsGood={card.changePositiveIsGood}
+            />
           </div>
-          <p className="mt-3 text-2xl font-semibold text-gray-900 dark:text-white tracking-tight">
+
+          {/* Value */}
+          <p className="text-[22px] font-bold text-gray-900 dark:text-white leading-none tracking-tight tabular-nums">
             {card.value}
           </p>
-          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">{card.label}</p>
-          {card.change !== null && (
-            <p className="mt-0.5 text-xs text-gray-400 dark:text-gray-500">vs last month</p>
-          )}
+
+          {/* Label */}
+          <p className="mt-1.5 text-xs text-gray-400 dark:text-gray-500 font-medium">
+            {card.label}
+            {card.change !== null && (
+              <span className="ml-1 text-gray-300 dark:text-gray-600">
+                · vs last month
+              </span>
+            )}
+          </p>
         </motion.div>
       ))}
     </motion.div>
   );
 }
-

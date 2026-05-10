@@ -19,20 +19,19 @@ export default function BalanceLineChart() {
   const isDark = resolvedTheme === "dark";
 
   const data = getMonthlySummaries(transactions);
-
-  const axisColor = isDark ? "#6b7280" : "#9ca3af";
-  const gridColor = isDark ? "#1f2937" : "#f3f4f6";
+  const axisColor = isDark ? "#4b5563" : "#d1d5db";
+  const gridColor = isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)";
 
   return (
-    <div className="w-full h-64">
+    <div className="w-full h-60">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={data}
-          margin={{ top: 4, right: 4, left: 0, bottom: 0 }}
+          margin={{ top: 4, right: 8, left: -8, bottom: 0 }}
         >
           <CartesianGrid
             stroke={gridColor}
-            strokeDasharray="3 3"
+            strokeDasharray="0"
             vertical={false}
           />
           <XAxis
@@ -50,16 +49,21 @@ export default function BalanceLineChart() {
           <Tooltip
             formatter={(val) => [`₹${Number(val).toLocaleString("en-IN")}`, ""]}
             contentStyle={{
-              background: isDark ? "#111827" : "#fff",
-              border: `1px solid ${isDark ? "#374151" : "#e5e7eb"}`,
-              borderRadius: 8,
+              background: isDark ? "#1a1d27" : "#fff",
+              border: `1px solid ${isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}`,
+              borderRadius: 10,
               fontSize: 12,
+              boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
+            }}
+            labelStyle={{
+              color: isDark ? "#9ca3af" : "#6b7280",
+              marginBottom: 4,
             }}
           />
           <Line
             type="monotone"
             dataKey="income"
-            stroke="#22c55e"
+            stroke="#34d399"
             strokeWidth={2}
             dot={false}
             name="Income"
@@ -67,7 +71,7 @@ export default function BalanceLineChart() {
           <Line
             type="monotone"
             dataKey="expense"
-            stroke="#ef4444"
+            stroke="#f87171"
             strokeWidth={2}
             dot={false}
             name="Expenses"
@@ -75,9 +79,9 @@ export default function BalanceLineChart() {
           <Line
             type="monotone"
             dataKey="balance"
-            stroke="#6366f1"
+            stroke="#818cf8"
             strokeWidth={2.5}
-            dot={{ r: 3, fill: "#6366f1" }}
+            dot={{ r: 3, fill: "#818cf8", strokeWidth: 0 }}
             name="Balance"
           />
         </LineChart>
