@@ -16,15 +16,11 @@ import {
 } from "lucide-react";
 
 const NAV_ITEMS = [
-  { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
-  {
-    href: "/dashboard/transactions",
-    label: "Transactions",
-    icon: ArrowLeftRight,
-  },
-  { href: "/dashboard/budgets", label: "Budgets", icon: PiggyBank },
-  { href: "/dashboard/analytics", label: "Analytics", icon: BarChart3 },
-  { href: "/dashboard/settings", label: "Settings", icon: Settings },
+  { href: "/dashboard",              label: "Overview",     icon: LayoutDashboard },
+  { href: "/dashboard/transactions", label: "Transactions", icon: ArrowLeftRight },
+  { href: "/dashboard/budgets",      label: "Budgets",      icon: PiggyBank },
+  { href: "/dashboard/analytics",    label: "Analytics",    icon: BarChart3 },
+  { href: "/dashboard/settings",     label: "Settings",     icon: Settings },
 ];
 
 type Props = { collapsed: boolean; onToggle: () => void };
@@ -36,12 +32,14 @@ export default function Sidebar({ collapsed, onToggle }: Props) {
     <motion.aside
       animate={{ width: collapsed ? 60 : 220 }}
       transition={{ type: "spring", stiffness: 320, damping: 32 }}
-      className="relative flex flex-col h-full shrink-0 overflow-hidden
-        bg-[#16181f] dark:bg-[#0e1016]
-        border-r border-white/[0.06]"
+      className={clsx(
+        "relative flex flex-col h-full shrink-0 overflow-hidden",
+        "bg-white dark:bg-[#0e1016]",
+        "border-r border-black/[0.06] dark:border-white/[0.06]"
+      )}
     >
       {/* Logo */}
-      <div className="flex items-center gap-3 px-4 h-[60px] border-b border-white/[0.06] shrink-0">
+      <div className="flex items-center gap-3 px-4 h-[60px] shrink-0 border-b border-black/[0.06] dark:border-white/[0.06]">
         <div className="w-7 h-7 rounded-lg bg-indigo-500 flex items-center justify-center shrink-0">
           <TrendingUp size={14} className="text-white" strokeWidth={2.5} />
         </div>
@@ -52,7 +50,7 @@ export default function Sidebar({ collapsed, onToggle }: Props) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
-              className="text-[15px] font-semibold text-white whitespace-nowrap tracking-tight"
+              className="text-[15px] font-semibold text-gray-900 dark:text-white whitespace-nowrap tracking-tight"
             >
               FinanceOS
             </motion.span>
@@ -72,18 +70,18 @@ export default function Sidebar({ collapsed, onToggle }: Props) {
               className={clsx(
                 "flex items-center gap-3 px-2.5 py-2 rounded-lg text-[13px] font-medium transition-colors duration-100 group",
                 active
-                  ? "bg-indigo-500/20 text-indigo-300"
-                  : "text-white/40 hover:text-white/80 hover:bg-white/[0.06]",
+                  ? "bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400"
+                  : "text-gray-500 dark:text-white/40 hover:text-gray-900 dark:hover:text-white/80 hover:bg-black/[0.04] dark:hover:bg-white/[0.05]"
               )}
             >
               <Icon
                 size={16}
                 strokeWidth={active ? 2.5 : 2}
                 className={clsx(
-                  "shrink-0",
+                  "shrink-0 transition-colors",
                   active
-                    ? "text-indigo-400"
-                    : "text-white/40 group-hover:text-white/70",
+                    ? "text-indigo-600 dark:text-indigo-400"
+                    : "text-gray-400 dark:text-white/30 group-hover:text-gray-600 dark:group-hover:text-white/70"
                 )}
               />
               <AnimatePresence>
@@ -107,10 +105,15 @@ export default function Sidebar({ collapsed, onToggle }: Props) {
       {/* Collapse button */}
       <button
         onClick={onToggle}
-        className="absolute -right-3 top-[46px] w-6 h-6 rounded-full z-10
-          bg-[#16181f] border border-white/10
-          flex items-center justify-center
-          text-white/30 hover:text-white/60 transition-colors"
+        className={clsx(
+          "absolute -right-3 top-[46px] w-6 h-6 rounded-full z-10",
+          "bg-white dark:bg-[#0e1016]",
+          "border border-black/[0.08] dark:border-white/[0.08]",
+          "flex items-center justify-center",
+          "text-gray-400 dark:text-white/30",
+          "hover:text-gray-600 dark:hover:text-white/60",
+          "transition-colors"
+        )}
         aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
       >
         {collapsed ? <ChevronRight size={11} /> : <ChevronLeft size={11} />}
