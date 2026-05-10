@@ -13,6 +13,8 @@ import { mockBudgets, mockTransactions } from "../lib/mockData";
 type Store = {
   transactions: Transaction[];
   budgets: Budget[];
+
+  // UI state — not persisted, resets on load which is fine
   role: Role;
   filter: FilterType;
   search: string;
@@ -21,6 +23,7 @@ type Store = {
   activePage: number;
   pageSize: number;
 
+  // Actions
   addTransaction: (t: Transaction) => void;
   deleteTransaction: (id: string) => void;
   updateTransaction: (id: string, updated: Partial<Transaction>) => void;
@@ -64,14 +67,14 @@ export const useFinanceStore = create<Store>()(
       updateTransaction: (id, updated) =>
         set((state) => ({
           transactions: state.transactions.map((t) =>
-            t.id === id ? { ...t, ...updated } : t,
+            t.id === id ? { ...t, ...updated } : t
           ),
         })),
 
       setBudget: (budget) =>
         set((state) => {
           const existing = state.budgets.findIndex(
-            (b) => b.category === budget.category,
+            (b) => b.category === budget.category
           );
           if (existing >= 0) {
             const updated = [...state.budgets];
@@ -95,27 +98,20 @@ export const useFinanceStore = create<Store>()(
         set((state) => ({
           sortBy: field,
           sortOrder:
-            state.sortBy === field && state.sortOrder === "asc"
-              ? "desc"
-              : "asc",
+            state.sortBy === field && state.sortOrder === "asc" ? "desc" : "asc",
           activePage: 1,
         })),
 
       resetFilters: () =>
-        set({
-          filter: "all",
-          search: "",
-          sortBy: "date",
-          sortOrder: "desc",
-          activePage: 1,
-        }),
+        set({ filter: "all", search: "", sortBy: "date", sortOrder: "desc", activePage: 1 }),
     }),
     {
       name: "finance-dashboard-store",
+      // Only persist the data, not UI state like role/filters
       partialize: (state) => ({
         transactions: state.transactions,
         budgets: state.budgets,
       }),
-    },
-  ),
+    }
+  )
 );
