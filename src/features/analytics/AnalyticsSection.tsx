@@ -32,8 +32,16 @@ function MonthlyBarChart() {
   return (
     <div className="w-full h-72">
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data} margin={{ top: 4, right: 4, left: 0, bottom: 0 }} barGap={4}>
-          <CartesianGrid stroke={gridColor} strokeDasharray="3 3" vertical={false} />
+        <BarChart
+          data={data}
+          margin={{ top: 4, right: 4, left: 0, bottom: 0 }}
+          barGap={4}
+        >
+          <CartesianGrid
+            stroke={gridColor}
+            strokeDasharray="3 3"
+            vertical={false}
+          />
           <XAxis
             dataKey="month"
             tick={{ fontSize: 11, fill: axisColor }}
@@ -47,7 +55,7 @@ function MonthlyBarChart() {
             tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`}
           />
           <Tooltip
-            formatter={(val: number) => [`₹${val.toLocaleString("en-IN")}`, ""]}
+            formatter={(val) => [`₹${Number(val).toLocaleString("en-IN")}`, ""]}
             contentStyle={{
               background: isDark ? "#111827" : "#fff",
               border: `1px solid ${isDark ? "#374151" : "#e5e7eb"}`,
@@ -59,13 +67,25 @@ function MonthlyBarChart() {
             iconType="square"
             iconSize={8}
             formatter={(value) => (
-              <span style={{ fontSize: 11, color: isDark ? "#9ca3af" : "#6b7280" }}>
+              <span
+                style={{ fontSize: 11, color: isDark ? "#9ca3af" : "#6b7280" }}
+              >
                 {value}
               </span>
             )}
           />
-          <Bar dataKey="income" name="Income" fill="#22c55e" radius={[4, 4, 0, 0]} />
-          <Bar dataKey="expense" name="Expenses" fill="#f87171" radius={[4, 4, 0, 0]} />
+          <Bar
+            dataKey="income"
+            name="Income"
+            fill="#22c55e"
+            radius={[4, 4, 0, 0]}
+          />
+          <Bar
+            dataKey="expense"
+            name="Expenses"
+            fill="#f87171"
+            radius={[4, 4, 0, 0]}
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>
@@ -88,7 +108,9 @@ function CategoryBreakdown() {
               <span className="text-gray-700 dark:text-gray-300">{name}</span>
               <span className="text-gray-500 dark:text-gray-400 tabular-nums">
                 {formatCurrency(value)}{" "}
-                <span className="text-xs text-gray-400">({pct.toFixed(0)}%)</span>
+                <span className="text-xs text-gray-400">
+                  ({pct.toFixed(0)}%)
+                </span>
               </span>
             </div>
             <motion.div

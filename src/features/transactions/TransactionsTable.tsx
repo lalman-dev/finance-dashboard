@@ -6,7 +6,14 @@ import { formatCurrency, formatDate } from "@/src/lib/finance";
 import { Transaction } from "@/src/types";
 import { motion, AnimatePresence } from "framer-motion";
 import clsx from "clsx";
-import { Pencil, Trash2, RefreshCw, ChevronLeft, ChevronRight, ArrowUpDown } from "lucide-react";
+import {
+  Pencil,
+  Trash2,
+  RefreshCw,
+  ChevronLeft,
+  ChevronRight,
+  ArrowUpDown,
+} from "lucide-react";
 import AddTransactionModal from "./AddTransactionModal";
 
 const PAGE_SIZE = 10;
@@ -66,7 +73,7 @@ export default function TransactionsTable({ canEdit }: Props) {
       size={12}
       className={clsx(
         "inline-block ml-1",
-        sortBy === field ? "text-indigo-500" : "text-gray-400"
+        sortBy === field ? "text-indigo-500" : "text-gray-400",
       )}
     />
   );
@@ -130,9 +137,13 @@ export default function TransactionsTable({ canEdit }: Props) {
                   </td>
                   <td className="py-3 pr-4">
                     <div className="flex items-center gap-1.5">
-                      <span className="text-gray-900 dark:text-white">{t.category}</span>
+                      <span className="text-gray-900 dark:text-white">
+                        {t.category}
+                      </span>
                       {t.isRecurring && (
-                        <RefreshCw size={11} className="text-gray-400" title="Recurring" />
+                        <span title="Recurring">
+                          <RefreshCw size={11} className="text-gray-400" />
+                        </span>
                       )}
                     </div>
                   </td>
@@ -145,7 +156,7 @@ export default function TransactionsTable({ canEdit }: Props) {
                         "inline-flex px-2 py-0.5 rounded-md text-xs font-medium",
                         t.type === "income"
                           ? "bg-green-50 dark:bg-green-950 text-green-700 dark:text-green-400"
-                          : "bg-red-50 dark:bg-red-950 text-red-700 dark:text-red-400"
+                          : "bg-red-50 dark:bg-red-950 text-red-700 dark:text-red-400",
                       )}
                     >
                       {t.type}
@@ -156,7 +167,7 @@ export default function TransactionsTable({ canEdit }: Props) {
                       "py-3 text-right font-medium tabular-nums",
                       t.type === "income"
                         ? "text-green-600 dark:text-green-400"
-                        : "text-red-600 dark:text-red-400"
+                        : "text-red-600 dark:text-red-400",
                     )}
                   >
                     {t.type === "income" ? "+" : "-"}
@@ -191,7 +202,8 @@ export default function TransactionsTable({ canEdit }: Props) {
       {totalPages > 1 && (
         <div className="flex items-center justify-between pt-4 text-xs text-gray-500 dark:text-gray-400">
           <span>
-            {(page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, filtered.length)} of {filtered.length}
+            {(page - 1) * PAGE_SIZE + 1}–
+            {Math.min(page * PAGE_SIZE, filtered.length)} of {filtered.length}
           </span>
           <div className="flex items-center gap-1">
             <button
@@ -224,4 +236,3 @@ export default function TransactionsTable({ canEdit }: Props) {
     </>
   );
 }
-
