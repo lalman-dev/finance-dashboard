@@ -17,7 +17,7 @@ export default function RoleToggle() {
           className={clsx(
             "px-3 py-1.5 text-[12px] font-medium rounded-md capitalize transition-all duration-150",
             role === r
-              ? "bg-white dark:bg-[#1e2130] text-gray-900 dark:text-white shadow-sm"
+              ? "bg-white dark:bg-[#35394e] border border-gray-500 text-gray-900 dark:text-white shadow-sm"
               : "text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300",
           )}
         >
