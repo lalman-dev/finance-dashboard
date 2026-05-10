@@ -13,8 +13,14 @@ import { getCategoryTotals } from "@/src/lib/finance";
 import { useTheme } from "next-themes";
 
 const COLORS = [
-  "#6366f1", "#22c55e", "#f59e0b", "#ef4444",
-  "#3b82f6", "#8b5cf6", "#ec4899", "#14b8a6",
+  "#6366f1",
+  "#22c55e",
+  "#f59e0b",
+  "#ef4444",
+  "#3b82f6",
+  "#8b5cf6",
+  "#ec4899",
+  "#14b8a6",
 ];
 
 export default function SpendingPieChart() {
@@ -48,7 +54,7 @@ export default function SpendingPieChart() {
             ))}
           </Pie>
           <Tooltip
-            formatter={(val: number) => [`₹${val.toLocaleString("en-IN")}`, ""]}
+            formatter={(val) => [`₹${Number(val).toLocaleString("en-IN")}`, ""]}
             contentStyle={{
               background: isDark ? "#111827" : "#fff",
               border: `1px solid ${isDark ? "#374151" : "#e5e7eb"}`,
@@ -63,7 +69,9 @@ export default function SpendingPieChart() {
             iconType="circle"
             iconSize={8}
             formatter={(value) => (
-              <span style={{ fontSize: 11, color: isDark ? "#9ca3af" : "#6b7280" }}>
+              <span
+                style={{ fontSize: 11, color: isDark ? "#9ca3af" : "#6b7280" }}
+              >
                 {value}
               </span>
             )}
@@ -73,4 +81,3 @@ export default function SpendingPieChart() {
     </div>
   );
 }
-

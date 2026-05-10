@@ -26,8 +26,15 @@ export default function BalanceLineChart() {
   return (
     <div className="w-full h-64">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 4, right: 4, left: 0, bottom: 0 }}>
-          <CartesianGrid stroke={gridColor} strokeDasharray="3 3" vertical={false} />
+        <LineChart
+          data={data}
+          margin={{ top: 4, right: 4, left: 0, bottom: 0 }}
+        >
+          <CartesianGrid
+            stroke={gridColor}
+            strokeDasharray="3 3"
+            vertical={false}
+          />
           <XAxis
             dataKey="month"
             tick={{ fontSize: 11, fill: axisColor }}
@@ -41,7 +48,7 @@ export default function BalanceLineChart() {
             tickFormatter={(v) => `₹${(v / 1000).toFixed(0)}k`}
           />
           <Tooltip
-            formatter={(val: number) => [`₹${val.toLocaleString("en-IN")}`, ""]}
+            formatter={(val) => [`₹${Number(val).toLocaleString("en-IN")}`, ""]}
             contentStyle={{
               background: isDark ? "#111827" : "#fff",
               border: `1px solid ${isDark ? "#374151" : "#e5e7eb"}`,
@@ -78,4 +85,3 @@ export default function BalanceLineChart() {
     </div>
   );
 }
-
